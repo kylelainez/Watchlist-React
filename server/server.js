@@ -4,7 +4,6 @@ const path = require('path');
 const logger = require('morgan');
 const favicon = require('serve-favicon');
 const cors = require('cors');
-const routes = require('./routes');
 const session = require('express-session');
 const passport = require('passport');
 
@@ -35,10 +34,9 @@ app.use(function (req, res, next) {
     res.locals.user = req.user;
     next();
 });
-
-app.get('/api/', routes);
-
+app.use('/api', require('./routes'));
 app.get('/*', function (req, res) {
+    console.log('here');
     res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
