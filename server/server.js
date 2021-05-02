@@ -6,12 +6,13 @@ const favicon = require('serve-favicon');
 const cors = require('cors');
 const app = express();
 
-require('./database');
+require('./config/database');
 
 // app.use(favicon(path.join(__dirname, 'build', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(cors());
 app.use(express.json());
+app.use(require('./config/auth'));
 app.use(express.static(path.join(__dirname, 'build')));
 
 app.use('/api', require('./routes'));
