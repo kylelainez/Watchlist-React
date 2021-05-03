@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const bcrypt = require('bcrypt');
 const SALT_ROUNDS = 16;
 
 const userSchema = new Schema(
     {
-        googleId: String,
-        avatar: String,
-        email: String,
+        email: { type: String, required: true, lowercase: true, unique: true },
+        password: String,
         firstName: String,
         lastName: String,
     },

@@ -16,7 +16,7 @@ export default function NavBar() {
             <Navbar.Toggle aria-controls='basic-navbar-nav' />
             <Navbar.Collapse id='basic-navbar-nav'>
                 <Nav className='ml-auto pr-2'>
-                    <Nav.Link onClick={}>Home</Nav.Link>
+                    <Nav.Link>Home</Nav.Link>
                     <Nav.Link href='#link'>Link</Nav.Link>
                 </Nav>
                 <Form inline>

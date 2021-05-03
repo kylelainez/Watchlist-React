@@ -7,9 +7,21 @@ const signup = (user) =>
     axios
         .post(URL + 'signup', user)
         .then((res) => {
-            if (res.ok) return res.json();
+            if (res.statusText === 'OK') {
+                tokenService.setToken(res.data.token);
+            }
+            return 'Success';
         })
-        .then(({ token }) => tokenService.setToken(token));
+        .catch((err) => {
+            console.dir(err);
+            if (err.response) {
+                const errCode = err.response.data.code;
+                if (errCode === 11000 || errCode === 11001) {
+                    return 'Email already in use';
+                }
+            }
+            return 'An error has occured';
+        });
 
 const login = (user) =>
     axios
