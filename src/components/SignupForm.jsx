@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { Form, Button, Col } from 'react-bootstrap';
 import userService from './../utils/userService';
 
-export default function SignupForm() {
+export default function SignupForm({ setSelected }) {
     const history = useHistory();
     const password = useRef();
     const confirmPassword = useRef();
@@ -109,6 +109,11 @@ export default function SignupForm() {
             <Button variant='primary' type='submit' size='lg' block>
                 Submit
             </Button>
+            <p
+                onClick={() => setSelected('login')}
+                style={{ cursor: 'pointer' }}>
+                Already have an Account? Login
+            </p>
         </Form>
     );
 }

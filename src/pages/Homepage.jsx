@@ -38,7 +38,7 @@ export default function Homepage() {
                 return (
                     <Row className='justify-content-center py-5'>
                         <Col sm={9}>
-                            <LoginForm />
+                            <LoginForm setSelected={setSelected} />
                         </Col>
                     </Row>
                 );
@@ -46,7 +46,7 @@ export default function Homepage() {
                 return (
                     <Row className='justify-content-center py-5'>
                         <Col sm={9}>
-                            <SignupForm />
+                            <SignupForm setSelected={setSelected} />
                         </Col>
                     </Row>
                 );
