@@ -106,7 +106,7 @@ export default function SignupForm() {
 
             <p ref={errorMessage}></p>
 
-            <Button variant='primary' type='submit'>
+            <Button variant='primary' type='submit' size='lg' block>
                 Submit
             </Button>
         </Form>
