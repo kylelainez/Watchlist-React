@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
+import { useHistory } from 'react-router-dom';
 import { Form, Button } from 'react-bootstrap';
 import userService from './../utils/userService';
 
 export default function LoginForm() {
+    const history = useHistory();
+    const errorMessage = useRef();
     const [formState, setFormState] = useState({
         email: '',
         password: '',
@@ -15,9 +18,15 @@ export default function LoginForm() {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        userService.login(formState);
+        const message = await userService.login(formState);
+        if (message !== 'Success') {
+            errorMessage.current.innerText = message;
+            errorMessage.current.className = 'alert alert-danger';
+        } else {
+            history.push('/');
+        }
     };
 
     return (
@@ -30,6 +39,7 @@ export default function LoginForm() {
                     name='email'
                     value={formState.email}
                     onChange={handleInput}
+                    required
                 />
             </Form.Group>
 
@@ -41,8 +51,11 @@ export default function LoginForm() {
                     name='password'
                     value={formState.password}
                     onChange={handleInput}
+                    required
                 />
             </Form.Group>
+
+            <p ref={errorMessage}></p>
 
             <Button variant='primary' type='submit'>
                 Submit
