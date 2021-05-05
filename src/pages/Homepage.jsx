@@ -4,7 +4,7 @@ import TMDB from './../tmdb.svg';
 import LoginForm from './../components/LoginForm';
 import SignupForm from './../components/SignupForm';
 
-export default function Homepage() {
+export default function Homepage({ handleUser }) {
     const [selected, setSelected] = useState('home');
 
     const setView = () => {
@@ -38,7 +38,10 @@ export default function Homepage() {
                 return (
                     <Row className='justify-content-center py-5'>
                         <Col sm={9}>
-                            <LoginForm setSelected={setSelected} />
+                            <LoginForm
+                                setSelected={setSelected}
+                                handleUser={handleUser}
+                            />
                         </Col>
                     </Row>
                 );
@@ -46,7 +49,10 @@ export default function Homepage() {
                 return (
                     <Row className='justify-content-center py-5'>
                         <Col sm={9}>
-                            <SignupForm setSelected={setSelected} />
+                            <SignupForm
+                                setSelected={setSelected}
+                                handleUser={handleUser}
+                            />
                         </Col>
                     </Row>
                 );

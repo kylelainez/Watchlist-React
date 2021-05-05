@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { Form, Button, Col } from 'react-bootstrap';
 import userService from './../utils/userService';
 
-export default function SignupForm({ setSelected }) {
+export default function SignupForm({ setSelected, handleUser }) {
     const history = useHistory();
     const password = useRef();
     const confirmPassword = useRef();
@@ -28,6 +28,7 @@ export default function SignupForm({ setSelected }) {
         if (formState.confirmPassword === formState.password) {
             const message = await userService.signup(formState);
             if (message === 'Success') {
+                handleUser();
                 history.push('/');
             } else {
                 errorMessage.current.innerText = message;

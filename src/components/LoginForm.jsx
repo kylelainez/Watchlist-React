@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { Form, Button } from 'react-bootstrap';
 import userService from './../utils/userService';
 
-export default function LoginForm({ setSelected }) {
+export default function LoginForm({ setSelected, handleUser }) {
     const history = useHistory();
     const errorMessage = useRef();
     const [formState, setFormState] = useState({
@@ -25,6 +25,7 @@ export default function LoginForm({ setSelected }) {
             errorMessage.current.innerText = message;
             errorMessage.current.className = 'alert alert-danger';
         } else {
+            handleUser();
             history.push('/');
         }
     };
