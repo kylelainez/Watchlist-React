@@ -60,17 +60,26 @@ export default function Homepage({ handleUser }) {
     };
 
     return (
-        <Container>
+        <Container style={{ minHeight: '600px' }}>
             <Row className='justify-content-center'>
                 <h1>Watchlist React</h1>
             </Row>
             {setView()}
-            <Row className='justify-content-center px-5 pb-3'>
-                <Image src={TMDB} fluid />
-            </Row>
-            <Row className='justify-content-center'>
-                <p>Powered by The Movie Database API</p>
-            </Row>
+            <Col
+                style={{
+                    position: 'fixed',
+                    right: 0,
+                    bottom: 0,
+                    left: 0,
+                    zIndex: 1030,
+                }}>
+                <Row className='justify-content-center px-5 pb-3'>
+                    <Image src={TMDB} style={{ width: '300px' }} />
+                </Row>
+                <Row className='justify-content-center'>
+                    <p>Powered by The Movie Database API</p>
+                </Row>
+            </Col>
         </Container>
     );
 }
