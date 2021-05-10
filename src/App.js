@@ -1,6 +1,7 @@
 import './App.css';
 import NavBar from './components/NavBar';
 import HomePage from './pages/Homepage';
+import ShowsPage from './pages/ShowsPage';
 import tokenService from './utils/tokenService';
 import { useState } from 'react';
 
@@ -13,7 +14,7 @@ function App() {
     return (
         <div className='App'>
             <NavBar />
-            {user ? '' : <HomePage handleUser={handleUser} />}
+            {user ? <ShowsPage /> : <HomePage handleUser={handleUser} />}
         </div>
     );
 }
