@@ -1,7 +1,11 @@
 import React from 'react';
-import showService from '../utils/showService';
+import { Container } from 'react-bootstrap';
+import Rows from '../components/Rows';
 
 export default function ShowsPage() {
-    showService.fetchData('test');
-    return <div></div>;
+    return (
+        <Container>
+            <Rows data='movies' />
+        </Container>
+    );
 }
