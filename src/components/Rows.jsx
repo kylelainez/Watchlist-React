@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import showService from '../utils/showService';
 import { Row, Card, Button } from 'react-bootstrap';
 
+const POSTER_URL = 'https://image.tmdb.org/t/p/original';
+
 export default function Rows({ data }) {
     const [shows, setShows] = useState([]);
 
@@ -16,12 +18,14 @@ export default function Rows({ data }) {
                     style={{ width: '15rem', margin: '1rem' }}
                     key={`show-${idx}`}>
                     <Card.Body>
-                        <Card.Title>Card Title</Card.Title>
-                        <Card.Text>
-                            Some quick example text to build on the card title
-                            and make up the bulk of the card's content.
-                        </Card.Text>
-                        <Button variant='primary'>Go somewhere</Button>
+                        <Card.Img
+                            variant='top'
+                            src={POSTER_URL + show.poster_path}
+                        />
+                        <Card.Title>
+                            {show.title || show.name || show.original_name}
+                        </Card.Title>
+                        <Card.Text>{show.overview}</Card.Text>
                     </Card.Body>
                 </Card>
             ))}

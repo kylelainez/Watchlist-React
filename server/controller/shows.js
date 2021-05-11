@@ -14,12 +14,12 @@ const requests = {
 };
 
 const fetchData = async (req, res) => {
-    // axios
-    //     .get(BASE_URL + 'trending/all/day' + `?api_key=${API_KEY}`)
-    //     .then((response) => {
-    //         res.json({ shows: response.data.results });
-    //     });
-    res.json({ shows: [5, 2, 1, 2, 3, 4, 5, 2] });
+    axios
+        .get(BASE_URL + 'trending/all/day' + `?api_key=${API_KEY}`)
+        .then((response) => {
+            res.json({ shows: response.data.results });
+        });
+    // res.json({ shows: [5, 2, 1, 2, 3, 4, 5, 2] });
 };
 
 module.exports = { fetchData };
