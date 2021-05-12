@@ -4,8 +4,8 @@ import Rows from '../components/Rows';
 
 export default function ShowsPage() {
     return (
-        <Container>
+        <div>
             <Rows data='movies' />
-        </Container>
+        </div>
     );
 }
