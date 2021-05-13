@@ -6,7 +6,7 @@ export default function ShowsPage() {
     return (
         <div>
             <Rows data='trending' />
-            <Rows data='movies' />
+            <Rows data='netflix' />
         </div>
     );
 }
