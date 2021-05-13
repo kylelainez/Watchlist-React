@@ -2,8 +2,8 @@
     overflow-x: scroll;
     overflow-y: hidden;
     flex-wrap: nowrap !important;
-    margin: 0 5px !important;
-    height: 300px;
+    margin: 0 20px !important;
+    height: 250px;
 }
 
 .poster-scroll::-webkit-scrollbar {
