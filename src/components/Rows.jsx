@@ -13,25 +13,10 @@ export default function Rows({ data }) {
 
     return (
         <Row style={{ margin: 0, width: '100vw' }}>
-            <h1>Trending</h1>
-            <Row
-                className='poster-scroll'
-                style={{
-                    overflowX: 'scroll',
-                    overflowY: 'hidden',
-                    flexWrap: 'nowrap',
-                    margin: '0 5px',
-                }}>
+            <h1 style={{ marginLeft: '15px' }}>Trending</h1>
+            <Row className='poster-scroll'>
                 {shows.map((show, idx) => (
-                    <Card
-                        style={{
-                            margin: '10px',
-                            border: 'none',
-                            height: '200px',
-                            minWidth: '150px',
-                            width: '100%',
-                        }}
-                        key={`show-${idx}`}>
+                    <Card className='poster' key={`show-${idx}`}>
                         <Card.Img
                             src={POSTER_URL + show.poster_path}
                             style={{ height: '100%' }}

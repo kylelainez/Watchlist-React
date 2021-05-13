@@ -1,3 +1,24 @@
+.poster-scroll {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    flex-wrap: nowrap !important;
+    margin: 0 5px !important;
+    height: 300px;
+}
+
 .poster-scroll::-webkit-scrollbar {
     display: none;
+}
+
+.poster {
+    margin: 20px 10px;
+    border: none !important;
+    height: 200px;
+    min-width: 140px !important;
+    width: 100%;
+    transition: 300ms;
+}
+
+.poster:hover {
+    transform: scale(1.2);
 }

@@ -5,6 +5,7 @@ import Rows from '../components/Rows';
 export default function ShowsPage() {
     return (
         <div>
+            <Rows data='trending' />
             <Rows data='movies' />
         </div>
     );
