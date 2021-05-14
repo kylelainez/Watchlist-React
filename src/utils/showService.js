@@ -14,4 +14,6 @@ const fetchData = (data) =>
             return res.data.shows;
         })
         .catch((err) => console.log(err));
+
+// const getVideo = (show) => axios.get(URL + );
 export default { fetchData };

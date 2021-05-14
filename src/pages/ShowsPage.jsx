@@ -1,12 +1,28 @@
-import React from 'react';
-import { Container } from 'react-bootstrap';
+import React, { useState } from 'react';
+import ShowDetails from './ShowDetails';
+
 import Rows from '../components/Rows';
 
 export default function ShowsPage() {
+    const [selected, setSelected] = useState(false);
+
+    function handleSelect(show) {
+        if (selected && selected.id === show.id) {
+            setSelected(false);
+        }
+        setSelected(show);
+    }
+
     return (
         <div>
-            <Rows data='trending' />
-            <Rows data='netflix' />
+            {selected === false ? (
+                <>
+                    <Rows data='trending' handleSelect={handleSelect} />
+                    <Rows data='netflix' handleSelect={handleSelect} />
+                </>
+            ) : (
+                <ShowDetails show={selected} />
+            )}
         </div>
     );
 }
