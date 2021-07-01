@@ -10,7 +10,7 @@ export default function ShowDetails({ handleSelect, show }) {
             autoplay: 1,
             disablekb: 1,
             modestbranding: 1,
-            playlist: `https://www.youtube.com/watch?v=${'hfikdvpj228'}`,
+            playlist: `https://www.youtube.com/watch?v=${'RC4syAKmjCw'}`,
         },
     };
 
@@ -18,9 +18,18 @@ export default function ShowDetails({ handleSelect, show }) {
         console.dir(e.target.playVideo());
     };
 
+    const readyPlayer = (event) => {
+        event.target.playVideo();
+    };
+
     return (
         <div>
-            <YouTube videoId={'hfikdvpj228'} opts={opts} onEnd={loop} />
+            <YouTube
+                videoId={'RC4syAKmjCw'}
+                opts={opts}
+                onEnd={loop}
+                onReady={readyPlayer}
+            />
         </div>
     );
 }
