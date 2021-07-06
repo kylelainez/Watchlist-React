@@ -15,5 +15,15 @@ const fetchData = (data) =>
         })
         .catch((err) => console.log(err));
 
-// const getVideo = (show) => axios.get(URL + );
-export default { fetchData };
+const fetchTrailer = (data) =>
+    axios
+        .get(URL + `/trailer/${data}`, {
+            headers: {
+                Authorization: 'Bearer ' + tokenService.getToken(),
+            },
+        })
+        .then((res) => {
+            return res.data.video;
+        })
+        .catch((err) => console.log(err));
+export default { fetchData, fetchTrailer };

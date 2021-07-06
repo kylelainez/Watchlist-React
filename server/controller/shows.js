@@ -23,4 +23,18 @@ const fetchData = async (req, res) => {
     // res.json({ shows: [5, 2, 1, 2, 3, 4, 5, 2] });
 };
 
-module.exports = { fetchData };
+const fetchTrailer = async (req, res) => {
+    const videos = {
+        movie: `movie/${req.params.data}/videos?api_key=${API_KEY}`,
+        tv: `tv/${req.params.data}/videos?api_key=${API_KEY}`,
+    };
+    axios
+        .get(BASE_URL + videos.movie)
+        .then((response) => {
+            console.log('here');
+            res.json({ video: response.data.results });
+        })
+        .catch((err) => console.log(err));
+};
+
+module.exports = { fetchData, fetchTrailer };
