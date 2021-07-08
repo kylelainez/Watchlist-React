@@ -13,7 +13,7 @@ export default function Rows({ data, handleSelect }) {
 
     return (
         <Row style={{ margin: 0, width: '100vw' }}>
-            <h1 style={{ marginLeft: '30px' }}>
+            <h1 style={{ marginLeft: '30px', color: 'white' }}>
                 {data.charAt(0).toUpperCase() + data.slice(1)}
             </h1>
             <Row className='poster-scroll'>

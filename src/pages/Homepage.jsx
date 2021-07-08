@@ -11,8 +11,8 @@ export default function Homepage({ handleUser }) {
         switch (selected) {
             case 'home':
                 return (
-                    <Col className='py-5'>
-                        <Row className='justify-content-center'>
+                    <Col className='py-5 justify-content-center'>
+                        <Row className='justify-content-center pb-4'>
                             <p>
                                 Save all your favorite movies and shows on a
                                 list!
@@ -28,7 +28,8 @@ export default function Homepage({ handleUser }) {
                             <Button
                                 className='mx-4'
                                 size='lg'
-                                onClick={() => setSelected('signup')}>
+                                onClick={() => setSelected('signup')}
+                                variant='secondary'>
                                 Signup
                             </Button>
                         </Row>
@@ -60,15 +61,30 @@ export default function Homepage({ handleUser }) {
     };
 
     return (
-        <Container style={{ minHeight: '600px' }}>
-            <Row className='justify-content-center'>
-                <h1>Watchlist React</h1>
-            </Row>
-            {setView()}
+        <Container
+            className='d-flex'
+            style={{
+                height: 'calc(100vh - 56px)',
+                minHeight: '820px',
+                position: 'relative',
+                color: '#fff',
+            }}>
+            <Col
+                className='justify-self-center align-self-center py-4'
+                style={{
+                    backgroundColor: '#101010',
+                    borderRadius: '30px',
+                    color: '#CFCFCF',
+                }}>
+                <Row className='justify-content-center'>
+                    <h1>Watchlist React</h1>
+                </Row>
+                {setView()}
+            </Col>
+
             <Col
                 style={{
-                    position: 'fixed',
-                    right: 0,
+                    position: 'absolute',
                     bottom: 0,
                     left: 0,
                     zIndex: 1030,

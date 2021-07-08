@@ -11,7 +11,11 @@ import {
 
 export default function NavBar() {
     return (
-        <Navbar bg='light' expand='lg'>
+        <Navbar
+            bg='#000'
+            variant='dark'
+            expand='lg'
+            style={{ padding: '8px 30px' }}>
             <Navbar.Brand href='#home'>Watchlist React</Navbar.Brand>
             <Navbar.Toggle aria-controls='basic-navbar-nav' />
             <Navbar.Collapse id='basic-navbar-nav'>

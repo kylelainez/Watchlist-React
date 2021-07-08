@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import YouTube from 'react-youtube';
 import showService from '../utils/showService';
 
-export default function ShowDetails({ handleSelect, show }) {
+export default function ShowDetails({ show }) {
     const [id, setId] = useState('');
     const [trailer, setTrailer] = useState(false);
 
@@ -16,7 +16,6 @@ export default function ShowDetails({ handleSelect, show }) {
             disablekb: 1,
             modestbranding: 1,
             loop: 1,
-            playlist: `https://www.youtube.com/watch?v=${trailer}`,
         },
     };
 
@@ -29,13 +28,13 @@ export default function ShowDetails({ handleSelect, show }) {
         if (id !== '') {
             const videos = await showService.fetchTrailer(id);
             for (let video of videos) {
-                if (video.site === 'YouTube') {
+                if (video.site === 'YouTube' && video.type === 'Trailer') {
                     setTrailer(video.key);
                     break;
                 }
             }
         }
-    }, [id, trailer]);
+    }, [id]);
 
     return (
         <div>
