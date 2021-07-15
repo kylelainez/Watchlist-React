@@ -1,6 +1,7 @@
 import { ConnectionStates } from 'mongoose';
 import React, { useEffect, useState } from 'react';
 import YouTube from 'react-youtube';
+import Overlay from '../components/Overlay';
 import showService from '../utils/showService';
 
 export default function ShowDetails({ show }) {
@@ -8,8 +9,8 @@ export default function ShowDetails({ show }) {
     const [trailer, setTrailer] = useState(false);
 
     const opts = {
-        height: window.innerHeight,
-        width: '100%',
+        height: window.innerHeight - 10,
+        width: window.innerWidth,
         playerVars: {
             // https://developers.google.com/youtube/player_parameters
             autoplay: 1,
@@ -26,7 +27,8 @@ export default function ShowDetails({ show }) {
     useEffect(async () => {
         setId(show?.id);
         if (id !== '') {
-            const videos = await showService.fetchTrailer(id);
+            const videos = await showService.fetchTrailer(id, show.media_type);
+            console.log(show.media_type);
             for (let video of videos) {
                 if (video.site === 'YouTube' && video.type === 'Trailer') {
                     setTrailer(video.key);
@@ -37,12 +39,22 @@ export default function ShowDetails({ show }) {
     }, [id]);
 
     return (
-        <div>
+        <div
+            style={{
+                height: '100vh',
+                width: '100vw',
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                margin: 0,
+                padding: 0,
+            }}>
             {trailer ? (
                 <YouTube videoId={trailer} opts={opts} onReady={readyPlayer} />
             ) : (
                 ''
             )}
+            <Overlay show={show} />
         </div>
     );
 }

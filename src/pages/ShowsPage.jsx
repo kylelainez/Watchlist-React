@@ -18,7 +18,11 @@ export default function ShowsPage() {
             {selected === false ? (
                 <>
                     <Rows data='trending' handleSelect={handleSelect} />
-                    <Rows data='netflix' handleSelect={handleSelect} />
+                    <Rows
+                        data='netflix'
+                        handleSelect={handleSelect}
+                        type={'tv'}
+                    />
                 </>
             ) : (
                 <ShowDetails show={selected} />

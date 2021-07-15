@@ -28,8 +28,9 @@ const fetchTrailer = async (req, res) => {
         movie: `movie/${req.params.data}/videos?api_key=${API_KEY}`,
         tv: `tv/${req.params.data}/videos?api_key=${API_KEY}`,
     };
+    console.log(req.params.type);
     axios
-        .get(BASE_URL + videos.movie)
+        .get(BASE_URL + videos[req.params.type])
         .then((response) => {
             console.log('here');
             res.json({ video: response.data.results });

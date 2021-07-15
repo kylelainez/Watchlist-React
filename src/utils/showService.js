@@ -15,9 +15,9 @@ const fetchData = (data) =>
         })
         .catch((err) => console.log(err));
 
-const fetchTrailer = (data) =>
+const fetchTrailer = (data, type) =>
     axios
-        .get(URL + `/trailer/${data}`, {
+        .get(URL + `/trailer/${data}/${type}`, {
             headers: {
                 Authorization: 'Bearer ' + tokenService.getToken(),
             },
