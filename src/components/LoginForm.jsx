@@ -61,11 +61,11 @@ export default function LoginForm({ setSelected, handleUser }) {
             <Button variant='primary' type='submit' size='lg' block>
                 Submit
             </Button>
-            <p>
+            <p className='pt-2'>
                 Don't have an Account?{' '}
                 <span
                     onClick={() => setSelected('signup')}
-                    style={{ cursor: 'pointer', color: '#007bff' }}>
+                    style={{ cursor: 'pointer', color: '#fff' }}>
                     Sign up
                 </span>
             </p>

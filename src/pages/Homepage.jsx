@@ -15,7 +15,7 @@ export default function Homepage({ handleUser }) {
         switch (selected) {
             case 'home':
                 return (
-                    <Col className='py-5 justify-content-center'>
+                    <Row className='py-5 justify-content-center'>
                         <Row className='justify-content-center pb-4'>
                             <p>
                                 Save all your favorite movies and shows on a
@@ -37,11 +37,13 @@ export default function Homepage({ handleUser }) {
                                 Signup
                             </Button>
                         </Row>
-                    </Col>
+                    </Row>
                 );
             case 'login':
                 return (
-                    <Row className='justify-content-center py-5'>
+                    <Row
+                        className='justify-content-center py-5'
+                        style={{ width: '100%' }}>
                         <Col sm={9}>
                             <LoginForm
                                 setSelected={setSelected}
@@ -52,7 +54,9 @@ export default function Homepage({ handleUser }) {
                 );
             case 'signup':
                 return (
-                    <Row className='justify-content-center py-5'>
+                    <Row
+                        className='justify-content-center py-5'
+                        style={{ width: '100%' }}>
                         <Col sm={9}>
                             <SignupForm
                                 setSelected={setSelected}
@@ -89,7 +93,7 @@ export default function Homepage({ handleUser }) {
                 />
             </div>
             <Container
-                className='d-flex'
+                className='d-flex justify-content-center'
                 style={{
                     height: 'calc(100vh - 60px)',
                     minHeight: '600px',
@@ -97,31 +101,18 @@ export default function Homepage({ handleUser }) {
                     color: '#fff',
                 }}>
                 <Col
-                    className='justify-self-center align-self-center py-4'
+                    className='d-flex flex-column align-self-center align-items-center justify-content-center py-4'
                     style={{
-                        backgroundColor: '#101010',
+                        backgroundColor: 'rgba(10, 10, 10, 0.9)',
                         borderRadius: '30px',
-                        color: '#CFCFCF',
+                        color: '#8F8F8F',
+                        maxWidth: '500px',
+                        minHeight: '600px',
                     }}>
                     <Row className='justify-content-center'>
-                        <h1>Watchlist React</h1>
+                        <h1>MyWatchList</h1>
                     </Row>
                     {setView()}
-                </Col>
-
-                <Col
-                    style={{
-                        position: 'absolute',
-                        bottom: 0,
-                        left: 0,
-                        zIndex: 1030,
-                    }}>
-                    <Row className='justify-content-center px-5 pb-3'>
-                        <Image src={TMDB} style={{ width: '300px' }} />
-                    </Row>
-                    <Row className='justify-content-center'>
-                        <p>Powered by The Movie Database API</p>
-                    </Row>
                 </Col>
             </Container>
         </>

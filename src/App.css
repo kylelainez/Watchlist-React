@@ -1,4 +1,10 @@
 .App {
     padding: 0;
     margin: 0;
+    font-family: 'Helvetica Neue', sans-serif;
+}
+
+.btn-primary {
+    background-color: #e50914 !important;
+    border: none !important;
 }
