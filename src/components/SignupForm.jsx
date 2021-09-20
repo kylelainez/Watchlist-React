@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { useHistory } from 'react-router-dom';
-import { Form, Button, Col } from 'react-bootstrap';
+import { Form, Button, Col, FloatingLabel } from 'react-bootstrap';
 import userService from './../utils/userService';
 
 export default function SignupForm({ setSelected, handleUser }) {
@@ -45,8 +45,10 @@ export default function SignupForm({ setSelected, handleUser }) {
     return (
         <Form onSubmit={handleSubmit} autoComplete='off'>
             <Form.Row>
-                <Form.Group controlId='formBasicFirstName' as={Col}>
-                    <Form.Label>First Name</Form.Label>
+                <FloatingLabel
+                    controlId='floatingFirst'
+                    label='First Name'
+                    className='mb-3'>
                     <Form.Control
                         placeholder='John'
                         name='firstName'
@@ -54,7 +56,7 @@ export default function SignupForm({ setSelected, handleUser }) {
                         onChange={handleInput}
                         required
                     />
-                </Form.Group>
+                </FloatingLabel>
 
                 <Form.Group controlId='formBasicLastName' as={Col}>
                     <Form.Label>Last Name</Form.Label>

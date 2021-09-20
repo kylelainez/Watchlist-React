@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { useHistory } from 'react-router-dom';
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button, FormFloating, FloatingLabel } from 'react-bootstrap';
 import userService from './../utils/userService';
 
 export default function LoginForm({ setSelected, handleUser }) {
@@ -31,33 +31,35 @@ export default function LoginForm({ setSelected, handleUser }) {
     };
 
     return (
-        <Form onSubmit={handleSubmit} autoComplete='off'>
-            <Form.Group controlId='formBasicEmail'>
-                <Form.Label>Email address</Form.Label>
+        <Form
+            onSubmit={handleSubmit}
+            autoComplete='off'
+            className='d-flex flex-column'>
+            <FloatingLabel
+                controlId='floatingEmail'
+                label='Email address'
+                className='mb-3'>
                 <Form.Control
                     type='email'
-                    placeholder='Enter email'
                     name='email'
+                    placeholder='Email'
                     value={formState.email}
                     onChange={handleInput}
                     required
                 />
-            </Form.Group>
+            </FloatingLabel>
 
-            <Form.Group controlId='formBasicPassword'>
-                <Form.Label>Password</Form.Label>
+            <FloatingLabel label='Password' controlId='floatingPassword'>
                 <Form.Control
                     type='password'
-                    placeholder='Password'
                     name='password'
+                    placeholder='Password'
                     value={formState.password}
                     onChange={handleInput}
                     required
                 />
-            </Form.Group>
-
+            </FloatingLabel>
             <p ref={errorMessage}></p>
-
             <Button variant='primary' type='submit' size='lg' block>
                 Submit
             </Button>

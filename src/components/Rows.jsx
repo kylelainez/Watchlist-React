@@ -17,7 +17,7 @@ export default function Rows({ data, type, handleSelect }) {
     }, []);
 
     return (
-        <Row style={{ margin: 0, width: '100vw' }}>
+        <Row style={{ margin: 0, width: '100vw', overflow: 'hidden' }}>
             <h1 style={{ marginLeft: '30px', color: 'white' }}>
                 {data.charAt(0).toUpperCase() + data.slice(1)}
             </h1>
