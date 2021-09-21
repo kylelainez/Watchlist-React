@@ -1,13 +1,5 @@
 import React from 'react';
-import axios from 'axios';
-import {
-    Navbar,
-    Nav,
-    NavDropdown,
-    Form,
-    FormControl,
-    Button,
-} from 'react-bootstrap';
+import { Navbar, Nav, Form, FormControl, Button } from 'react-bootstrap';
 
 export default function NavBar() {
     return (
@@ -23,7 +15,7 @@ export default function NavBar() {
                     <Nav.Link>Home</Nav.Link>
                     <Nav.Link href='#link'>Link</Nav.Link>
                 </Nav>
-                <Form inline>
+                <Form inline='true'>
                     <FormControl
                         type='text'
                         placeholder='Search'

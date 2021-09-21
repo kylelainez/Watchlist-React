@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { useHistory } from 'react-router-dom';
-import { Form, Button, FormFloating, FloatingLabel } from 'react-bootstrap';
+import { Form, Button, FloatingLabel } from 'react-bootstrap';
 import userService from './../utils/userService';
 
 export default function LoginForm({ setSelected, handleUser }) {
@@ -60,7 +60,7 @@ export default function LoginForm({ setSelected, handleUser }) {
                 />
             </FloatingLabel>
             <p ref={errorMessage}></p>
-            <Button variant='primary' type='submit' size='lg' block>
+            <Button variant='primary' type='submit' size='lg' block='true'>
                 Submit
             </Button>
             <p className='pt-2'>

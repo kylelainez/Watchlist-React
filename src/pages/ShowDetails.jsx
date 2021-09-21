@@ -1,4 +1,3 @@
-import { ConnectionStates } from 'mongoose';
 import React, { useEffect, useState } from 'react';
 import YouTube from 'react-youtube';
 import Overlay from '../components/Overlay';
@@ -24,18 +23,24 @@ export default function ShowDetails({ show }) {
         event.target.playVideo();
     };
 
-    useEffect(async () => {
-        setId(show?.id);
-        if (id !== '') {
-            const videos = await showService.fetchTrailer(id, show.media_type);
-            console.log(show.media_type);
-            for (let video of videos) {
-                if (video.site === 'YouTube' && video.type === 'Trailer') {
-                    setTrailer(video.key);
-                    break;
+    useEffect(() => {
+        async function awaitData() {
+            setId(show?.id);
+            if (id !== '') {
+                const videos = await showService.fetchTrailer(
+                    id,
+                    show.media_type
+                );
+                console.log(show.media_type);
+                for (let video of videos) {
+                    if (video.site === 'YouTube' && video.type === 'Trailer') {
+                        setTrailer(video.key);
+                        break;
+                    }
                 }
             }
         }
+        awaitData();
     }, [id]);
 
     return (

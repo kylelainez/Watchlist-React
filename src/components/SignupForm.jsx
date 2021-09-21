@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { useHistory } from 'react-router-dom';
-import { Form, Button, Col, FloatingLabel } from 'react-bootstrap';
+import { Form, Button, FloatingLabel } from 'react-bootstrap';
 import userService from './../utils/userService';
 
 export default function SignupForm({ setSelected, handleUser }) {
@@ -43,73 +43,83 @@ export default function SignupForm({ setSelected, handleUser }) {
     };
 
     return (
-        <Form onSubmit={handleSubmit} autoComplete='off'>
-            <Form.Row>
-                <FloatingLabel
-                    controlId='floatingFirst'
-                    label='First Name'
-                    className='mb-3'>
-                    <Form.Control
-                        placeholder='John'
-                        name='firstName'
-                        value={formState.firstName}
-                        onChange={handleInput}
-                        required
-                    />
-                </FloatingLabel>
+        <Form
+            onSubmit={handleSubmit}
+            autoComplete='off'
+            className='d-flex flex-column'>
+            <FloatingLabel
+                controlId='floatingFirst'
+                label='First Name'
+                className='mb-3'>
+                <Form.Control
+                    name='firstName'
+                    placeholder='First Name'
+                    value={formState.firstName}
+                    onChange={handleInput}
+                    required
+                />
+            </FloatingLabel>
 
-                <Form.Group controlId='formBasicLastName' as={Col}>
-                    <Form.Label>Last Name</Form.Label>
-                    <Form.Control
-                        placeholder='Smith'
-                        name='lastName'
-                        value={formState.lastName}
-                        onChange={handleInput}
-                        required
-                    />
-                </Form.Group>
-            </Form.Row>
-            <Form.Group controlId='formBasicEmail'>
-                <Form.Label>Email address</Form.Label>
+            <FloatingLabel
+                controlId='floatingLast'
+                label='Last Name'
+                className='mb-3'>
+                <Form.Control
+                    name='lastName'
+                    placeholder='Last Name'
+                    value={formState.lastName}
+                    onChange={handleInput}
+                    required
+                />
+            </FloatingLabel>
+
+            <FloatingLabel
+                controlId='floatingEmail'
+                label='Email Address'
+                className='mb-3'>
                 <Form.Control
                     type='email'
-                    placeholder='johnsmith@domain.com'
                     name='email'
+                    placeholder='Email Address'
                     value={formState.email}
                     onChange={handleInput}
                     required
                 />
-            </Form.Group>
+            </FloatingLabel>
 
-            <Form.Group controlId='formBasicPassword'>
-                <Form.Label>Password</Form.Label>
+            <FloatingLabel
+                controlId='floatingPassword'
+                label='Password'
+                className='mb-3'>
                 <Form.Control
                     type='password'
-                    placeholder='Password'
                     name='password'
+                    placeholder='Password'
                     value={formState.password}
                     onChange={handleInput}
                     required
                     ref={password}
                 />
-            </Form.Group>
+            </FloatingLabel>
 
-            <Form.Group controlId='formBasicConfirmPassword'>
-                <Form.Label>Confirm Password</Form.Label>
+            <FloatingLabel
+                controlId='floatingConfirmPassword'
+                label='Confirm Password'
+                className='mb-3'>
                 <Form.Control
                     type='password'
-                    placeholder='Confirm Password'
                     name='confirmPassword'
+                    placeholder='Confirm Password'
                     value={formState.confirmPassword}
                     onChange={handleInput}
                     required
                     ref={confirmPassword}
                 />
-            </Form.Group>
+            </FloatingLabel>
 
             <p ref={errorMessage}></p>
 
-            <Button variant='primary' type='submit' size='lg' block>
+            <Button variant='primary' type='submit' size='lg' block='true'>
                 Submit
             </Button>
             <p className='pt-2'>

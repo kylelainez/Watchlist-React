@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { Container, Row, Image, Col, Button } from 'react-bootstrap';
-import TMDB from './../tmdb.svg';
+import { Container, Row, Col, Button } from 'react-bootstrap';
 import LoginForm from './../components/LoginForm';
 import SignupForm from './../components/SignupForm';
 import BGImage from './../images/movie-bg.jpeg';
@@ -71,6 +70,8 @@ export default function Homepage({ handleUser }) {
                         </Col>
                     </Row>
                 );
+            default:
+                return <div></div>;
         }
     };
 
@@ -90,7 +91,7 @@ export default function Homepage({ handleUser }) {
                 }}>
                 <div
                     style={{
-                        backgroundColor: 'black',
+                        backgroundColor: '#000',
                         opacity: 0.7,
                         height: '100%',
                         width: '100%',
