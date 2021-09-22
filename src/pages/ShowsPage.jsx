@@ -1,32 +1,18 @@
 import React, { useState } from 'react';
 import ShowDetails from './ShowDetails';
-
 import Rows from '../components/Rows';
+import NavBar from './../components/NavBar';
 
-export default function ShowsPage() {
+export default function ShowsPage({ handleShow }) {
     const [selected, setSelected] = useState(false);
 
-    function handleSelect(show) {
-        if (selected && selected.id === show.id) {
-            setSelected(false);
-        }
-        setSelected(show);
-    }
-
     return (
-        <div>
-            {selected === false ? (
-                <>
-                    <Rows data='trending' handleSelect={handleSelect} />
-                    <Rows
-                        data='netflix'
-                        handleSelect={handleSelect}
-                        type={'tv'}
-                    />
-                </>
-            ) : (
-                <ShowDetails show={selected} />
-            )}
-        </div>
+        <>
+            <NavBar />
+            <div>
+                <Rows data='trending' handleSelect={handleShow} />
+                <Rows data='netflix' handleSelect={handleShow} type={'tv'} />
+            </div>
+        </>
     );
 }

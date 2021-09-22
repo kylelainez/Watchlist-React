@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { Container, Row, Col, Button } from 'react-bootstrap';
+import { Container, Row, Col, Button, Navbar } from 'react-bootstrap';
 import LoginForm from './../components/LoginForm';
 import SignupForm from './../components/SignupForm';
 import BGImage from './../images/movie-bg.jpeg';
+import NavBar from './../components/NavBar';
 
 export default function Homepage({ handleUser }) {
     const [selected, setSelected] = useState('home');
@@ -77,6 +78,7 @@ export default function Homepage({ handleUser }) {
 
     return (
         <>
+            <NavBar />
             <div
                 style={{
                     backgroundImage: `url(${BGImage})`,
