@@ -17,7 +17,7 @@ const fetchData = (data) =>
 
 const fetchTrailer = (data, type) =>
     axios
-        .get(URL + `/trailer/${data}/${type}`, {
+        .get(URL + `trailer/${data}/${type}`, {
             headers: {
                 Authorization: 'Bearer ' + tokenService.getToken(),
             },
@@ -26,4 +26,14 @@ const fetchTrailer = (data, type) =>
             return res.data.video;
         })
         .catch((err) => console.log(err));
-export default { fetchData, fetchTrailer };
+
+const fetchShow = (type, id) =>
+    axios
+        .get(`${URL}${type}/${id}`, {
+            headers: {
+                Authorization: 'Bearer ' + tokenService.getToken(),
+            },
+        })
+        .then((res) => res.data)
+        .catch((err) => console.log(err));
+export default { fetchData, fetchTrailer, fetchShow };

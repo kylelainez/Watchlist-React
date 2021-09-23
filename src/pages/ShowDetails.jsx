@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import YouTube from 'react-youtube';
 import Overlay from '../components/Overlay';
 import showService from '../utils/showService';
@@ -6,7 +7,8 @@ import showService from '../utils/showService';
 export default function ShowDetails({ show }) {
     const [id, setId] = useState('');
     const [trailer, setTrailer] = useState(false);
-
+    const [selectedShow, setShow] = useState(show);
+    const params = useParams();
     const opts = {
         height: window.innerHeight - 10,
         width: window.innerWidth,
@@ -21,27 +23,40 @@ export default function ShowDetails({ show }) {
 
     const readyPlayer = (event) => {
         event.target.playVideo();
+        setTimeout(() => {
+            document.querySelector('#movie_player')?.playVideo();
+        }, 1000);
     };
 
     useEffect(() => {
+        async function getShow() {
+            const show2 = await showService.fetchShow(params.type, params.id);
+            show2.media_type = params.type;
+            setShow(show2);
+        }
+        if (!selectedShow) getShow();
+    }, [selectedShow]);
+
+    useEffect(() => {
+        console.log('get trailer');
+        setId(selectedShow?.id);
         async function awaitData() {
-            setId(show?.id);
-            if (id !== '') {
-                const videos = await showService.fetchTrailer(
-                    id,
-                    show.media_type
-                );
-                console.log(show.media_type);
-                for (let video of videos) {
-                    if (video.site === 'YouTube' && video.type === 'Trailer') {
-                        setTrailer(video.key);
-                        break;
-                    }
+            const videos = await showService.fetchTrailer(
+                id,
+                selectedShow.media_type
+            );
+            console.log(selectedShow.media_type);
+            for (let video of videos) {
+                if (video.site === 'YouTube' && video.type === 'Trailer') {
+                    setTrailer(video.key);
+                    break;
                 }
             }
         }
-        awaitData();
-    }, [id]);
+        if (id && selectedShow) {
+            awaitData();
+        }
+    }, [id, selectedShow]);
 
     return (
         <div
@@ -54,12 +69,12 @@ export default function ShowDetails({ show }) {
                 margin: 0,
                 padding: 0,
             }}>
-            {trailer ? (
+            {trailer && selectedShow ? (
                 <YouTube videoId={trailer} opts={opts} onReady={readyPlayer} />
             ) : (
                 ''
             )}
-            <Overlay show={show} />
+            {selectedShow ? <Overlay show={selectedShow} /> : ''}
         </div>
     );
 }

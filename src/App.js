@@ -20,7 +20,7 @@ function App() {
             setSelected(false);
         }
         setSelected(show);
-        history.push(`/show/${show.id}`);
+        history.push(`/${show.media_type}/${show.id}`);
     };
     return (
         <div className='App'>
@@ -37,7 +37,7 @@ function App() {
                     }
                 />
                 <Route
-                    path='/show/:id'
+                    path='/:type/:id'
                     render={() => <ShowDetails show={selected} />}
                 />
             </Switch>

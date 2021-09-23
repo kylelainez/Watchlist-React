@@ -14,12 +14,13 @@ const requests = {
 };
 
 const fetchData = async (req, res) => {
-    axios
-        .get(BASE_URL + requests[req.params.data])
-        .then((response) => {
-            res.json({ shows: response.data.results });
-        })
-        .catch((err) => console.log('error'));
+    if (req.params.data)
+        axios
+            .get(BASE_URL + requests[req.params.data])
+            .then((response) => {
+                res.json({ shows: response.data.results });
+            })
+            .catch((err) => console.log('error fetchdata'));
     // res.json({ shows: [5, 2, 1, 2, 3, 4, 5, 2] });
 };
 
@@ -28,14 +29,23 @@ const fetchTrailer = async (req, res) => {
         movie: `movie/${req.params.data}/videos?api_key=${API_KEY}`,
         tv: `tv/${req.params.data}/videos?api_key=${API_KEY}`,
     };
-    console.log(req.params.type);
     axios
         .get(BASE_URL + videos[req.params.type])
         .then((response) => {
-            console.log('here');
             res.json({ video: response.data.results });
         })
         .catch((err) => console.log(err));
 };
 
-module.exports = { fetchData, fetchTrailer };
+const fetchShow = (req, res) => {
+    console.log(req.params);
+    if (req.params.id)
+        axios
+            .get(
+                `${BASE_URL}${req.params.type}/${req.params.id}?api_key=${API_KEY}`
+            )
+            .then((response) => res.json(response.data))
+            .catch((err) => console.log(err));
+};
+
+module.exports = { fetchData, fetchTrailer, fetchShow };

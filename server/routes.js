@@ -7,5 +7,6 @@ router.post('/user/signup', userController.signup);
 router.post('/user/login', userController.login);
 router.get('/tmdb/:data', showController.fetchData);
 router.get('/tmdb/trailer/:data/:type', showController.fetchTrailer);
+router.get('/tmdb/:type/:id', showController.fetchShow);
 
 module.exports = router;
